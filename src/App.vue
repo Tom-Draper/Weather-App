@@ -45,7 +45,7 @@ export default {
     },
     setResults (results) {
       this.weather = results;
-      this.weather.main.temp = 6;
+      this.weather.main.temp = 15;
     },
     dateBuilder () {
       let d = new Date();
@@ -125,12 +125,72 @@ body {
   background: linear-gradient(rgb(42, 157, 211), rgb(153, 198, 240))
 }
 #app.temp9 {
-  background: linear-gradient(rgb(153, 198, 240), rgb(42, 157, 211))
+  background: linear-gradient( rgb(153, 198, 240), rgb(42, 157, 211))
+}
+
+#app.temp10 {
+  background: linear-gradient(rgb(58,159,200), rgb(161,201,236))
+}
+#app.temp11 {
+  background: linear-gradient(rgb(58,159,200), rgb(170,204,233))
+}
+#app.temp12 {
+  background: linear-gradient(rgb(90, 129, 179), rgb(179,206,229))
+}
+#app.temp13 {
+  background: linear-gradient(rgb(106, 138, 168), rgb(187,209,226))
+}
+#app.temp14 {
+  background: linear-gradient(rgb(122,169,157), rgb(196,212,222))
+}
+#app.temp15 {
+  background: linear-gradient(rgb(139, 160, 171), rgb(204,215,218))
+}
+#app.temp16 {
+  background: linear-gradient(rgb(163, 174, 136), rgb(212,218,215))
+}
+#app.temp17 {
+  background: linear-gradient(rgb(187,179,114), rgb(230,224,208))
+}
+#app.temp18 {
+  background: linear-gradient(rgb(203,181,104), rgb(238,226,204))
+}
+#app.temp19 {
+  background: linear-gradient(rgb(219,184,93), rgb(247,229,201))
+}
+
+#app.temp20 {
+  background: linear-gradient(20deg,rgb(235, 186, 82), rgb(255, 232, 197))
+}
+#app.temp21 {
+  background: linear-gradient(50deg,rgb(235, 186, 82), rgb(255, 232, 197))
+}
+#app.temp22 {
+  background: linear-gradient(70deg,rgb(235, 186, 82), rgb(255, 232, 197))
+}
+
+#app.temp25 {
+  background: linear-gradient(100deg,rgb(247, 186, 54), rgb(252, 180, 113))
+}
+#app.temp26 {
+  background: linear-gradient(100deg,rgb(247, 186, 54), rgb(252, 180, 113))
+}
+#app.temp27 {
+  background: linear-gradient(100deg,rgb(247, 186, 54), rgb(252, 180, 113))
+}
+#app.temp28 {
+  background: linear-gradient(100deg,rgb(212, 92, 12), rgb(250, 146, 35))
+}
+#app.temp29 {
+  background: linear-gradient(100deg,rgb(199, 62, 12), rgb(250, 121, 35))
+}
+#app.temp30 {
+  background: linear-gradient(30deg, rgb(199, 40, 12), rgb(250, 92, 35))
 }
 
 
-#app.temp30 {
-  background: linear-gradient(30deg, rgb(199, 12, 46), rgb(250, 85, 35))
+#app.temp36, #app.temp37, #app.temp38, #app.temp39, #app.temp40 {
+  background: linear-gradient(20deg, rgb(25, 0, 46), rgb(148, 0, 27), rgb(174, 0, 0))
 }
 
 
