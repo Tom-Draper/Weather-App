@@ -1,26 +1,28 @@
 <template>
   <div id="app" :class="typeof weather.main != 'undefined' ? 'temp' + Math.round(weather.main.temp)  : ''">
-    <main>
-    <div class="top-bar">
-      <div class="search-box">
-        <input type="text" 
-        class="search-bar" 
-        placeholder="Search..."
-        v-model="query"
-        @keyup.enter="fetchWeather"
-        />
+    <div id="app-highlight" :class="typeof weather.main != 'undefined' ? 'highlight' + Math.round(weather.main.temp)  : ''" v-on:keydown="handleArrow">
+      <main>
+      <div class="top-bar">
+        <div class="search-box">
+          <input type="text" 
+          class="search-bar" 
+          placeholder="Search..."
+          v-model="query"
+          @keyup.enter="fetchWeather"
+          />
+        </div>
+        <div class="location-box" v-if="typeof weather.main != 'undefined'">
+          <div class="location">{{ weather.name }}, {{ weather.sys.country }}</div>
+        </div>
       </div>
-      <div class="location-box" v-if="typeof weather.main != 'undefined'">
-        <div class="location">{{ weather.name }}, {{ weather.sys.country }}</div>
+      <div class="weather-wrap" v-if="typeof weather.main != 'undefined'">
+        <div class="weather-box">
+          <div class="temp">{{ Math.round(weather.main.temp) }}<span class="degrees">°C</span></div>
+          <div class="weather">{{ weather.weather[0].main }}</div>
+        </div>
       </div>
+      </main>
     </div>
-    <div class="weather-wrap" v-if="typeof weather.main != 'undefined'">
-      <div class="weather-box">
-        <div class="temp">{{ Math.round(weather.main.temp) }}<span class="degrees">°C</span></div>
-        <div class="weather">{{ weather.weather[0].main }}</div>
-      </div>
-    </div>
-    </main>
   </div>
 </template>
 
@@ -45,7 +47,7 @@ export default {
     },
     setResults (results) {
       this.weather = results;
-      this.weather.main.temp = 15;
+      this.weather.main.temp = 16;
     },
     dateBuilder () {
       let d = new Date();
@@ -65,6 +67,20 @@ export default {
       }
       console.log(tClass);
       return tClass;
+    },
+    inc() {
+      this.weather.main.temp += 1;
+    },
+    dec() {
+      this.weather.main.temp -= 1;
+    },
+    handleArrow(event) {
+      console.log(event.keyCode);
+      if (event.keyCode == 38) {
+        this.inc();
+      } else if (event.keyCode == 40) {
+        this.dec();
+      }
     }
   }
 }
@@ -134,63 +150,184 @@ body {
 #app.temp11 {
   background: linear-gradient(rgb(58,159,200), rgb(170,204,233))
 }
+
 #app.temp12 {
-  background: linear-gradient(rgb(90, 129, 179), rgb(179,206,229))
+  background: linear-gradient(rgb(96, 172, 202), rgb(204,215,218))
 }
 #app.temp13 {
-  background: linear-gradient(rgb(106, 138, 168), rgb(187,209,226))
+  background: linear-gradient(rgb(109, 174, 209), rgb(204,215,218))
 }
 #app.temp14 {
-  background: linear-gradient(rgb(122,169,157), rgb(196,212,222))
+  background: linear-gradient(rgb(135, 175, 197), rgb(204,215,218))
 }
 #app.temp15 {
-  background: linear-gradient(rgb(139, 160, 171), rgb(204,215,218))
+  background: linear-gradient(rgb(178, 210, 226), rgb(217, 231, 235))
 }
+
 #app.temp16 {
-  background: linear-gradient(rgb(163, 174, 136), rgb(212,218,215))
+  background: linear-gradient(rgb(236, 240, 198), rgb(251, 255, 232))
 }
 #app.temp17 {
-  background: linear-gradient(rgb(187,179,114), rgb(230,224,208))
+  background: linear-gradient(rgb(230, 237, 169), rgb(251, 255, 232))
 }
+
 #app.temp18 {
-  background: linear-gradient(rgb(203,181,104), rgb(238,226,204))
+  background: linear-gradient(rgb(235, 209, 116)rgb(242, 230, 207))
 }
+
+
 #app.temp19 {
-  background: linear-gradient(rgb(219,184,93), rgb(247,229,201))
+  background: linear-gradient(rgb(240, 208, 88), rgb(255, 220, 120))
+}
+.highlight19 {
+  background: linear-gradient(100deg, rgba(0, 0, 0, 0), rgba(255, 143, 205, 0.213))
 }
 
 #app.temp20 {
-  background: linear-gradient(20deg,rgb(235, 186, 82), rgb(255, 232, 197))
+  background: linear-gradient(50deg, rgb(208, 167, 35), rgb(255, 235, 121))
 }
+.highlight20 {
+  background: linear-gradient(100deg, rgba(0, 0, 0, 0), rgba(255, 255, 255, 0.178))
+}
+
 #app.temp21 {
-  background: linear-gradient(50deg,rgb(235, 186, 82), rgb(255, 232, 197))
+  background: linear-gradient(50deg, rgb(208, 167, 35), rgb(255, 231, 97))
 }
+.highlight21 {
+  background: linear-gradient(100deg, rgba(0, 0, 0, 0), rgba(255, 255, 255, 0.178))
+}
+
 #app.temp22 {
-  background: linear-gradient(70deg,rgb(235, 186, 82), rgb(255, 232, 197))
+  background: linear-gradient(50deg, rgb(208, 167, 35), rgb(255, 229, 83))
+}
+.highlight22 {
+  background: linear-gradient(100deg, rgba(0, 0, 0, 0), rgba(255, 255, 255, 0.111))
+}
+
+#app.temp23 {
+  background: linear-gradient(50deg, rgb(208, 167, 35), rgb(255, 226, 64))
+}
+.highlight23 {
+  background: linear-gradient(100deg, rgba(0, 0, 0, 0), rgba(255, 255, 255, 0.07))
+}
+
+#app.temp24 {
+  background: linear-gradient(50deg, rgb(220, 168, 0), rgb(255, 217, 0))
+}
+.highlight24 {
+  background: linear-gradient(100deg, rgba(0, 0, 0, 0), rgba(255, 145, 0, 0.583))
 }
 
 #app.temp25 {
-  background: linear-gradient(100deg,rgb(247, 186, 54), rgb(252, 180, 113))
+  background: linear-gradient(50deg, rgb(182, 124, 0), rgb(255, 196, 0))
 }
+.highlight25 {
+  background: linear-gradient(100deg, rgba(0, 0, 0, 0), rgba(255, 145, 0, 0.755))
+}
+
 #app.temp26 {
-  background: linear-gradient(100deg,rgb(247, 186, 54), rgb(252, 180, 113))
+  background: linear-gradient(50deg, rgb(158, 76, 0), rgb(255, 183, 0))
 }
+.highlight26 {
+  background: linear-gradient(40deg, rgba(0, 0, 0, 0), rgba(255, 145, 0, 0.611))
+}
+
 #app.temp27 {
-  background: linear-gradient(100deg,rgb(247, 186, 54), rgb(252, 180, 113))
+  background: linear-gradient(50deg, rgb(135, 54, 0), rgb(255, 111, 0))
 }
+.highlight27 {
+  background: linear-gradient(40deg, rgba(0, 0, 0, 0), rgba(255, 145, 0, 0.611))
+}
+
 #app.temp28 {
-  background: linear-gradient(100deg,rgb(212, 92, 12), rgb(250, 146, 35))
+  background: linear-gradient(50deg, rgb(135, 0, 25), rgb(255, 81, 0))
 }
+.highlight28 {
+  background: linear-gradient(40deg, rgba(0, 0, 0, 0), rgba(255, 145, 0, 0.611))
+}
+
 #app.temp29 {
-  background: linear-gradient(100deg,rgb(199, 62, 12), rgb(250, 121, 35))
+  background: linear-gradient(50deg, rgb(135, 36, 0), rgb(255, 0, 0))
 }
+.highlight29 {
+  background: linear-gradient(40deg, rgba(0, 0, 0, 0), rgba(255, 145, 0, 0.611))
+}
+
 #app.temp30 {
-  background: linear-gradient(30deg, rgb(199, 40, 12), rgb(250, 92, 35))
+  background: linear-gradient(50deg, rgb(135, 0, 25), rgb(255, 0, 0))
+}
+.highlight30 {
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0), rgba(255, 145, 0, 0.522))
 }
 
+#app.temp31 {
+  background: linear-gradient(50deg, rgb(135, 0, 25), rgb(221, 0, 0))
+}
+.highlight31 {
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0), rgba(255, 145, 0, 0.275))
+}
 
-#app.temp36, #app.temp37, #app.temp38, #app.temp39, #app.temp40 {
-  background: linear-gradient(20deg, rgb(25, 0, 46), rgb(148, 0, 27), rgb(174, 0, 0))
+#app.temp32 {
+  background: linear-gradient(50deg, rgb(135, 0, 25), rgb(233, 0, 0))
+}
+.highlight32 {
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0), rgba(255, 0, 0, 0.522))
+}
+
+#app.temp33 {
+  background: linear-gradient(50deg, rgb(135, 0, 25), rgb(255, 0, 0))
+}
+.highlight33 {
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0), rgba(106, 0, 133, 0.097))
+}
+
+#app.temp34 {
+  background: linear-gradient(100deg, rgb(135, 0, 25), rgb(255, 0, 0))
+}
+.highlight34 {
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0), rgba(106, 0, 133, 0.289))
+}
+
+#app.temp35 {
+  background: linear-gradient(90deg, rgb(135, 0, 25), rgb(255, 0, 0))
+}
+.highlight35 {
+  background: linear-gradient(40deg, rgba(0, 0, 0, 0), rgba(106, 0, 133, 0.487))
+}
+
+#app.temp36 {
+  background: linear-gradient(90deg, rgb(135, 0, 25), rgb(255, 0, 0))
+}
+.highlight36 {
+  background: linear-gradient(10deg, rgba(0, 0, 0, 0), rgba(94, 0, 118, 0.522))
+}
+
+#app.temp37 {
+  background: linear-gradient(90deg, rgb(135, 0, 25), rgb(255, 0, 0))
+}
+.highlight37 {
+  background: linear-gradient(340deg, rgba(0, 0, 0, 0), rgba(83, 0, 104, 0.659))
+}
+
+#app.temp38 {
+  background: linear-gradient(10deg, rgb(121, 0, 22), rgb(255, 0, 0))
+}
+.highlight38 {
+  background: linear-gradient(290deg, rgba(0, 0, 0, 0), rgba(60, 0, 75, 0.761))
+}
+
+#app.temp39 {
+  background: linear-gradient(100deg, rgb(121, 0, 20), rgb(255, 0, 0))
+}
+.highlight39 {
+  background: linear-gradient(240deg, rgba(0, 0, 0, 0), rgba(55, 0, 60, 0.863))
+}
+
+#app.temp40 {
+  background: linear-gradient(120deg, rgb(121, 0, 20), rgb(255, 0, 0))
+}
+.highlight40 {
+  background: linear-gradient(210deg, rgba(0, 0, 0, 0), rgb(38, 0, 41))
 }
 
 
