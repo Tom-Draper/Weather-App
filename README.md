@@ -1,5 +1,5 @@
 # Weather-App
-Weather app design concept
+Weather app design concept.
 
 ![3](https://user-images.githubusercontent.com/41476809/147776916-7ce4d52b-7fa8-4dd4-9e3f-eeb868188c6a.png)
 
