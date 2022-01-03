@@ -369,7 +369,7 @@ main {
   display: flex;
 }
 
-.search-box .search-bar: focus {
+.search-box .search-bar :focus {
   box-shadow: 0px 0px 16px rgba(0, 0, 0, 0.25);
   background-color: rgba(255, 255, 255, 0.75);
   border-radius: 16px 0px 16px 0px;
