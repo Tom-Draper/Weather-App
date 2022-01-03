@@ -1,6 +1,6 @@
 <template>
   <div id="app" :class="temperatureClass()">
-    <div id="app-highlight" :class="temperatureClass()" v-on:keydown="handleArrow">
+    <div id="app-highlight" :class="temperatureHighlightClass()" v-on:keydown="handleArrow">
       <main>
       <div class="top-bar">
         <div class="search-box">
@@ -48,6 +48,13 @@ export default {
     temperatureClass() {
       if (typeof this.weather.main != 'undefined') {
         return 'temp' + Math.max(Math.min(Math.round(this.weather.main.temp), 40), -1)
+      } else {
+        return '';
+      }
+    },
+    temperatureHighlightClass() {
+      if (typeof this.weather.main != 'undefined') {
+        return 'highlight' + Math.max(Math.min(Math.round(this.weather.main.temp), 40), -1)
       } else {
         return '';
       }
@@ -129,55 +136,78 @@ body {
 }
 
 #app.temp3 {
-  background: linear-gradient(100deg, rgb(206, 228, 255), rgb(0, 208, 255))
+  background: linear-gradient(0deg, rgb(0, 208, 255), rgb(206, 228, 255))
 }
 
 #app.temp4 {
-  background: linear-gradient(140deg, rgb(222, 237, 255), rgb(40, 187, 255))
+  background: linear-gradient(260deg,  rgb(40, 198, 255), rgb(222, 237, 255))
 }
+
 #app.temp5 {
-  background: linear-gradient(-310deg, rgb(194, 221, 255), rgb(29, 183, 255))
+  background: linear-gradient(290deg,  rgb(46, 189, 255), rgb(180, 214, 255))
 }
 
 #app.temp6 {
-  background: linear-gradient(30deg, rgb(180, 214, 255), rgb(29, 183, 255))
+  background: linear-gradient(320deg, rgb(46, 189, 255), rgb(180, 214, 255))
 }
 #app.temp7 {
-  background: linear-gradient(60deg, rgb(180, 214, 255), rgb(29, 183, 255))
+  background: linear-gradient(180deg, rgb(102, 207, 255), rgb(157, 227, 255))
 }
 
 #app.temp8 {
-  background: linear-gradient(rgb(46, 189, 255), rgb(153, 198, 240))
+  background: linear-gradient(180deg, rgb(144, 220, 255), rgb(157, 227, 255))
 }
 #app.temp9 {
-  background: linear-gradient(rgb(163, 211, 255), rgb(45, 188, 255))
+  background: linear-gradient(180deg, rgb(157, 227, 255), rgb(206, 244, 255))
 }
 
 #app.temp10 {
-  background: linear-gradient(rgb(66, 201, 255), rgb(161, 198, 230))
+  background: linear-gradient(220deg, rgb(157, 227, 255),rgb(246, 253, 255))
 }
+.highlight10{
+  background: linear-gradient(100deg, rgba(0, 0, 0, 0), rgba(255, 143, 205, 0.17))
+}
+
 #app.temp11 {
-  background: linear-gradient(rgb(75, 204, 255), rgb(187, 223, 255))
+  background: linear-gradient(240deg, rgb(146, 224, 255),rgb(246, 253, 255))
+}
+.highlight11 {
+  background: linear-gradient(100deg, rgba(0, 0, 0, 0), rgba(255, 143, 205, 0.17))
 }
 
 #app.temp12 {
-  background: linear-gradient(rgb(125, 218, 255),rgb(237, 251, 255))
+  background: linear-gradient(250deg, rgb(125, 218, 255),rgb(237, 251, 255))
+}
+.highlight12 {
+  background: linear-gradient(100deg, rgba(0, 0, 0, 0), rgba(255, 143, 205, 0.17))
 }
 
 #app.temp13 {
-  background: linear-gradient(rgb(130, 211, 255), rgb(255, 251, 226))
+  background: linear-gradient(300deg, rgb(130, 211, 255), rgb(255, 251, 226))
+}
+.highlight13 {
+  background: linear-gradient(100deg, rgba(0, 0, 0, 0), rgba(255, 143, 205, 0.17))
 }
 
 #app.temp14 {
   background: linear-gradient(rgb(177, 228, 255), rgb(255, 254, 231))
 }
+.highlight14 {
+  background: linear-gradient(100deg, rgba(0, 0, 0, 0), rgba(255, 143, 205, 0.19))
+}
 
 #app.temp15 {
-  background: linear-gradient(rgb(242, 243, 213), rgb(217, 231, 235))
+  background: linear-gradient(rgb(230, 250, 255), rgb(254, 255, 218))
+}
+.highlight15 {
+  background: linear-gradient(100deg, rgba(0, 0, 0, 0), rgba(255, 143, 205, 0.213))
 }
 
 #app.temp16 {
   background: linear-gradient(rgb(252, 255, 197), rgb(255, 246, 197))
+}
+.highlight16 {
+  background: linear-gradient(100deg, rgba(0, 0, 0, 0), rgba(255, 143, 205, 0.213))
 }
 
 #app.temp17 {
@@ -196,7 +226,7 @@ body {
 
 
 #app.temp19 {
-  background: linear-gradient(rgb(240, 208, 88), rgb(255, 220, 120))
+  background: linear-gradient(rgb(255, 220, 95), rgb(255, 220, 120))
 }
 .highlight19 {
   background: linear-gradient(100deg, rgba(0, 0, 0, 0), rgba(255, 143, 205, 0.213))
@@ -231,21 +261,21 @@ body {
 }
 
 #app.temp24 {
-  background: linear-gradient(50deg, rgb(253, 194, 0), rgb(255, 217, 0))
+  background: linear-gradient(50deg, rgb(255, 206, 45), rgb(255, 217, 0))
 }
 .highlight24 {
   background: linear-gradient(100deg, rgba(0, 0, 0, 0), rgba(255, 145, 0, 0.583))
 }
 
 #app.temp25 {
-  background: linear-gradient(50deg, rgb(182, 124, 0), rgb(255, 196, 0))
+  background: linear-gradient(50deg, rgb(211, 144, 0), rgb(255, 196, 0))
 }
 .highlight25 {
   background: linear-gradient(100deg, rgba(0, 0, 0, 0), rgba(255, 145, 0, 0.755))
 }
 
 #app.temp26 {
-  background: linear-gradient(50deg, rgb(158, 76, 0), rgb(255, 183, 0))
+  background: linear-gradient(50deg, rgb(214, 104, 0), rgb(255, 183, 0))
 }
 .highlight26 {
   background: linear-gradient(40deg, rgba(0, 0, 0, 0), rgba(255, 145, 0, 0.611))
