@@ -388,7 +388,6 @@ main {
 
 .search-box {
   flex: 4;
-  margin-bottom: 30px;
 }
 
 .search-box .search-bar {
@@ -416,6 +415,8 @@ main {
 
 .top-bar {
   display: flex;
+  margin-bottom: 30px;
+
 }
 
 .search-box .search-bar :focus {
@@ -426,7 +427,10 @@ main {
 
 .location-box {
   flex: 6;
+}
 
+.location {
+    margin-top: 3px;
 }
 
 .location-box .location {
@@ -476,5 +480,22 @@ main {
   font-size: 22px;
   font-weight: 900;
   margin-top: -30px;
+}
+
+@media only screen and (max-width: 600px) {
+  .weather-box .temp {
+    font-size: 9.5em;
+  }
+  
+  .search-box {
+    flex: 3;
+    max-width: 185px;
+  }
+  .search-bar {
+    width: 100%;
+  }
+  .location-box {
+    flex: 4;
+  }
 }
 </style>
